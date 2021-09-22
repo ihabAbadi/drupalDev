@@ -1,0 +1,5 @@
+services:
+  first_service:
+    class: \Drupal\mymodule\Service\FirstService
+  hash_password:
+    class: \Drupal\mymodule\Service\SuperHashService
