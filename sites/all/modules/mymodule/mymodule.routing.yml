@@ -1,0 +1,10 @@
+# mymodule.firstpage:
+#   path: '/mypage/{name}'
+#   defaults:
+#     _controller: '\Drupal\mymodule\Controller\FirstPageController::firstPage'
+#     _title: 'Our First Page'
+#   requirements:
+#     _permission: 'access content'
+#     name: '[a-zA-Z]+'
+route_callbacks:
+  - '\Drupal\mymodule\Routing\OurRoutes::routes'
