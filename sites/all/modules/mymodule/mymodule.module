@@ -75,6 +75,20 @@ function mymodule_uninstall()
     $schema->dropTable(TODO_TABLE);
 }
 
-// function mymodule_theme()
-// {
-// }
+function mymodule_theme()
+{
+    $theme['mymodule_theme_todo'] = [
+        'variables' => ['todos'=>NULL, 'message' => NULL],
+        'template' => 'mymodule-todos-page'
+    ];
+    return $theme;
+}
+
+
+// function mymodule_theme($existing, $type, $theme, $path) {
+//     return [
+//       'my_template' => [
+//         'variables' => ['todos' => NULL, 'message'=> NULL],
+//       ],
+//     ];
+//   }
