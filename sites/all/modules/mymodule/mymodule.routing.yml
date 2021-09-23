@@ -16,3 +16,4 @@ mymodule.form:
     _permission: 'access content'
 route_callbacks:
   - '\Drupal\mymodule\Routing\OurRoutes::routes'
+  - '\Drupal\mymodule\Routing\ToDoListRoutes::routes'

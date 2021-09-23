@@ -9,3 +9,5 @@ services:
       # ['<nom_de_la_méthode>', ['parmètre methode 1',...]]
       - ['startLog',['fichier1']]
     #On peut injecter comme paramètre d'autre service, en utilisant le nom du service avec '@' comme prefix
+  mymodule.validator:
+    class: \Drupal\mymodule\Service\ValidatorService
