@@ -6,7 +6,7 @@ use Symfony\Component\Routing\Route;
 
 class OurRoutes {
     public function routes() {
-        $methods = ['\FirstPageController::firstPage' => '/mypage/{name}',
+        $methods = ['\FirstPageController::firstPage' => '/mypage/{name?}',
                  '\FirstPageController::pageWithService' => '/page-service',
                  '\HashController::hashPage' => '/hash/{password}'
                 ];

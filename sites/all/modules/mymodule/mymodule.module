@@ -1,0 +1,42 @@
+<?php
+
+//Executer à l'installation
+
+use Drupal\Core\Database\Database;
+
+define('CONTACT_TABLE', 'contact');
+
+function mymodule_install()
+{
+    //Définition d'un schéma à exploiter par l'api Schema de Drupal
+    $spec = [
+        'description' => 'contact',
+        'fields' => [
+            'id' => [
+                'type' => 'serial',
+                'not null' => TRUE
+            ],
+            'name' => [
+                'type' => 'varchar',
+                'not null' => TRUE,
+                'length' => '100',
+                'default' => ''
+            ]
+        ],
+        'primary key' => ['id']
+    ];
+
+    $schema = Database::getConnection()->schema();
+    $schema->createTable(CONTACT_TABLE, $spec);
+}
+
+//Executer à la dsinstallation
+function mymodule_uninstall()
+{
+    $schema = Database::getConnection()->schema();
+    $schema->dropTable(CONTACT_TABLE);
+}
+
+// function mymodule_theme()
+// {
+// }

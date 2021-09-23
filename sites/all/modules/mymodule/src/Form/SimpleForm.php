@@ -2,16 +2,29 @@
 
 namespace Drupal\mymodule\Form;
 
+use Drupal\Core\Database\Connection;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class SimpleForm extends FormBase {
 
+    private $_data;
     public function getFormId()
     {
         //Un id unique par formulaire
         return 'mymodue.simpleform';
+    }
+
+    public function __construct(Connection $data)
+    {
+        $this->_data = $data;
+    }
+
+
+    public static function create(ContainerInterface $container) {
+        return new static($container->get('database'));
     }
 
     
@@ -41,7 +54,11 @@ class SimpleForm extends FormBase {
         // var_dump($form);
         // echo "</pre>";
 
-        //Executer une logique 
+        //Executer une logique
+        $query = $this->_data->insert('contact');
+        $query->fields([
+            'name' => $form_state->getValue("titre")
+        ])->execute();
         $form_state->setRedirect('mymodule.\FirstPageController::firstPage', ['name' => $form_state->getValue("titre")]);
     }
 }
