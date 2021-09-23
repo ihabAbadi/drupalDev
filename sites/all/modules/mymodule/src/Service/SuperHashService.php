@@ -8,8 +8,10 @@ use Drupal\mymodule\MyInterface\HashInterface;
 class SuperHashService extends ControllerBase implements HashInterface {
 
     public function getHash(string $password) {
-        return hash('sha256', $password)."super";
+        return hash('sha512', $password)."super";
     }
 
-    
+    public function getHashType() {
+        return "sha512";
+    }
 }

@@ -7,9 +7,23 @@ use Drupal\mymodule\MyInterface\HashInterface;
 
 class HashService extends ControllerBase implements HashInterface {
 
-    public function getHash(string $password) {
-        return hash('sha256', $password)."normal";
+    private $typeCrypto;
+    public function __construct($type)
+    {
+        $this->typeCrypto = $type;
     }
 
+    public function getHash(string $password) {
+        return hash($this->typeCrypto, $password)."normal";
+    }
+
+    public function getHashType() {
+        return $this->typeCrypto;
+    }
+    
+
+    public function startLog($file) {
+        echo "Log in ".$file;
+    }
 
 }

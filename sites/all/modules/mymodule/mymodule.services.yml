@@ -2,4 +2,10 @@ services:
   first_service:
     class: \Drupal\mymodule\Service\FirstService
   hash_password:
-    class: \Drupal\mymodule\Service\SuperHashService
+    class: \Drupal\mymodule\Service\HashService
+    arguments: ['sha512']
+    calls:
+      #représente la liste des méthodes à executer à l'instance du service,
+      # ['<nom_de_la_méthode>', ['parmètre methode 1',...]]
+      - ['startLog',['fichier1']]
+    #On peut injecter comme paramètre d'autre service, en utilisant le nom du service avec '@' comme prefix

@@ -21,7 +21,7 @@ class HashController extends ControllerBase {
     public function hashPage(string $password) {
         $hash = $this->_hashService->getHash($password);
         return [
-            "#markup" => "The sha256 hash for $password is : $hash"
+            "#markup" => "The ".$this->_hashService->getHashType()." hash for $password is : $hash"
         ];
     }
 }
