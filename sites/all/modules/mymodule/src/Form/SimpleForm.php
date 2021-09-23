@@ -40,5 +40,8 @@ class SimpleForm extends FormBase {
         // echo "<pre>";
         // var_dump($form);
         // echo "</pre>";
+
+        //Executer une logique 
+        $form_state->setRedirect('mymodule.\FirstPageController::firstPage', ['name' => $form_state->getValue("titre")]);
     }
 }
