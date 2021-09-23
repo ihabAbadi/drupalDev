@@ -5,6 +5,41 @@
 use Drupal\Core\Database\Database;
 
 define('CONTACT_TABLE', 'contact');
+define('TODO_TABLE', 'todo');
+
+function createToDoTable() {
+    $spec = [
+        'description' => 'Todo',
+        'fields' => [
+            'id' => [
+                'type' => 'serial',
+                'not null' => TRUE
+            ],
+            'title' => [
+                'type' => 'varchar',
+                'not null' => TRUE,
+                'length' => '100',
+                'default' => ''
+            ],
+            'email' => [
+                'type' => 'varchar',
+                'not null' => TRUE,
+                'length' => '255',
+                'default' => ''
+            ],
+            'content' => [
+                'type' => 'text',
+                'not null' => TRUE,
+                
+            ],
+        ],
+        'primary key' => ['id']
+    ];
+
+    $schema = Database::getConnection()->schema();
+    $schema->createTable(TODO_TABLE, $spec);
+}
+
 
 function mymodule_install()
 {
@@ -28,6 +63,8 @@ function mymodule_install()
 
     $schema = Database::getConnection()->schema();
     $schema->createTable(CONTACT_TABLE, $spec);
+
+    createToDoTable();
 }
 
 //Executer à la dsinstallation
@@ -35,6 +72,7 @@ function mymodule_uninstall()
 {
     $schema = Database::getConnection()->schema();
     $schema->dropTable(CONTACT_TABLE);
+    $schema->dropTable(TODO_TABLE);
 }
 
 // function mymodule_theme()
