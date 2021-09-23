@@ -6,5 +6,13 @@
 #   requirements:
 #     _permission: 'access content'
 #     name: '[a-zA-Z]+'
+
+mymodule.form:
+  path: 'mymodule/form'
+  defaults:
+    _form: '\Drupal\mymodule\Form\SimpleForm'
+    _title: 'Premier formulaire'
+  requirements:
+    _permission: 'access content'
 route_callbacks:
   - '\Drupal\mymodule\Routing\OurRoutes::routes'

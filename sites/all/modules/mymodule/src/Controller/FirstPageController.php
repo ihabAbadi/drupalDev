@@ -24,9 +24,10 @@ class FirstPageController extends ControllerBase {
         //         "#markup" => t("Bonjour @name",['@name' => $name])
         //     ];
         // }
-        return [
-            "#markup" => t("Bonjour @name",['@name' => $name])
-        ];  
+        // return [
+        //     "#markup" =>\Drupal::formBuilder()->getForm("Drupal\mymodule\Form\SimpleForm")
+        // ];  
+        return \Drupal::formBuilder()->getForm("Drupal\mymodule\Form\SimpleForm");
     }
 
 
