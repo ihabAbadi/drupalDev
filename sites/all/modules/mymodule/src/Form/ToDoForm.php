@@ -2,6 +2,8 @@
 
 namespace Drupal\mymodule\Form;
 
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -38,10 +40,17 @@ class ToDoForm extends FormBase {
             "#title" => "le contenu de la todo",
             "#type" => 'textarea',
         ];
+        $form["message"] = [
+            "#type" => "markup",
+            "#markup" => "<div id='result_message'></div>"
+        ];
         $form["actions"]["submit"] = [
             '#type' => 'submit',
             '#value' => 'enregistrer',
-            "#button_type" => 'primary'
+            "#button_type" => 'primary',
+            "#ajax" => [
+                "callback" => "::submitAjax"
+            ]
         ];
         return $form;
     }
@@ -52,6 +61,19 @@ class ToDoForm extends FormBase {
         }
     }
 
+
+    public function submitAjax(array &$form, FormStateInterface $form_state) {
+        $query = $this->_connection->insert(TODO_TABLE);
+        $query->fields([
+            "title" => $form_state->getValue('title'),
+            "content" => $form_state->getValue('content'),
+            "email" => $form_state->getValue('email'),
+        ])->execute();
+
+        $response = new AjaxResponse();
+        $response->addCommand(new HtmlCommand('#result_message', 'To do ajouté'));    
+        return $response;
+    }
 
     public function submitForm(array &$form, FormStateInterface $form_state)  {
 
