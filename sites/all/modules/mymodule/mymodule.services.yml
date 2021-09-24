@@ -11,3 +11,11 @@ services:
     #On peut injecter comme paramètre d'autre service, en utilisant le nom du service avec '@' comme prefix
   mymodule.validator:
     class: \Drupal\mymodule\Service\ValidatorService
+  mymodule.config_event_subscirber:
+    class: \Drupal\mymodule\EventSubscriber\ConfigEventSubscriber
+    tags:
+      - { name: 'event_subscriber'}
+  mymodule.user_login_event_subscirber:
+    class: \Drupal\mymodule\EventSubscriber\LoginEventSubscriber
+    tags:
+      - { name: 'event_subscriber'}

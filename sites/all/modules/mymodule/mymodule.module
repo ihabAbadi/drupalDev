@@ -3,6 +3,7 @@
 //Executer à l'installation
 
 use Drupal\Core\Database\Database;
+use Drupal\mymodule\Event\UserLoginEvent;
 
 define('CONTACT_TABLE', 'contact');
 define('TODO_TABLE', 'todo');
@@ -82,6 +83,13 @@ function mymodule_theme()
         'template' => 'mymodule-todos-page'
     ];
     return $theme;
+}
+
+
+function mymodule_user_login($user) {
+    $event = new UserLoginEvent($user);
+    $dispatcher = \Drupal::service('event_dispatcher');
+    $dispatcher->dispatch($event, UserLoginEvent::LOGIN_EVENT);
 }
 
 
