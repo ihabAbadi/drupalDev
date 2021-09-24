@@ -1,0 +1,22 @@
+add product entity entities:
+  title: 'Create new Product entity entities'
+
+administer product entity entities:
+  title: 'Administer Product entity entities'
+  description: 'Allow to access the administration form to configure Product entity entities.'
+  restrict access: true
+
+delete product entity entities:
+  title: 'Delete Product entity entities'
+
+edit product entity entities:
+  title: 'Edit Product entity entities'
+
+view published product entity entities:
+  title: 'View published Product entity entities'
+
+view unpublished product entity entities:
+  title: 'View unpublished Product entity entities'
+
+permission_callbacks:
+  - \Drupal\module_with_entity\ProductEntityPermissions::generatePermissions

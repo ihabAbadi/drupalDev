@@ -1,0 +1,13 @@
+{
+    "name": "module_with_entity",
+    "type": "drupal-module",
+    "description": "Our first module with entity",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/module_with_entity",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/module_with_entity",
+        "source": "http://cgit.drupalcode.org/module_with_entity",
+    },
+}
