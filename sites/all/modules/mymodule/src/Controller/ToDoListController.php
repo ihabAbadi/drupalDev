@@ -62,7 +62,6 @@ class ToDoListController extends ControllerBase {
 
 
     //Dans un service de convertion vers ToDoDTO
-
     private function convertToDTO($todos) {
         $convertedTodos = [];
         foreach($todos as $todo) {            
