@@ -22,6 +22,12 @@ class FirstPageController extends ControllerBase {
     }
     public function firstPage(?string $name) {
 
+        //Ajouter des données dans le state API
+        $state = \Drupal::state()->set('key1', 'val1');
+
+        //Récupérer des données à partir du state API
+
+        $valueFromState = \Drupal::state()->get('key1');
         $query = $this->_connection->select('contact', 'c');
         $query->fields('c',['name']);
         $result = $query->execute();
