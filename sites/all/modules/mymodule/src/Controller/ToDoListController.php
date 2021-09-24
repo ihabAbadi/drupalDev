@@ -65,11 +65,9 @@ class ToDoListController extends ControllerBase {
 
     private function convertToDTO($todos) {
         $convertedTodos = [];
-
-        foreach($todos as $todo) {
-            $convertedTodos[] = new ToDoDTO($todo["title"], $todo["content"]);
+        foreach($todos as $todo) {            
+             $convertedTodos[] = new ToDoDTO($todo->title, $todo->content);
         }
-
         return $convertedTodos;
     }
 
