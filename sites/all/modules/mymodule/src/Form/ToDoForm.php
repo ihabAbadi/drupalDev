@@ -4,6 +4,7 @@ namespace Drupal\mymodule\Form;
 
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -72,6 +73,7 @@ class ToDoForm extends FormBase {
 
         $response = new AjaxResponse();
         $response->addCommand(new HtmlCommand('#result_message', 'To do ajouté'));    
+        Cache::invalidateTags(['my_cache']);
         return $response;
     }
 

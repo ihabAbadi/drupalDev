@@ -19,3 +19,9 @@ services:
     class: \Drupal\mymodule\EventSubscriber\LoginEventSubscriber
     tags:
       - { name: 'event_subscriber'}
+  mymodule.cache:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments: [mymodule.cache]
